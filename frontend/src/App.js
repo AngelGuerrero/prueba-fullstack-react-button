@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
 
-  const url = `http://localhost:8080/api/tests/`;
+  const url = `https://ag-react-backend.herokuapp.com/api/tests/`;
   
   const [value, setValue] = useState("Type something!");
 
