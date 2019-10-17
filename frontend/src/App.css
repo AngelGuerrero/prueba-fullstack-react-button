@@ -1,10 +1,16 @@
 .main-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   background-color: #F7EEF2;
+}
+
+.header-title {
+  color: #352340;
+  margin: 15px;
 }
 
 .wrapper {
