@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/system/bin/www.js --exec babel-node -e js"
+    "clean": "rm -rf build && mkdir build",
+    "dev": "nodemon ./src/system/bin/www.js --exec babel-node -e js",
+    "build-server": "babel -d ./build ./src/ -s",
+    "build": "npm run clean && npm run build-css && npm run build-server",
+    "start": "npm run build-server && node ./build/system/bin/www.js"
   },
   "repository": {
     "type": "git",
