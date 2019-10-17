@@ -4,10 +4,7 @@ import "./App.css";
 require('dotenv').config();
 
 function App() {
-  const url = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/tests/';
-
-  console.log(process.env.REACT_APP_API_URL);
-  
+  const url = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/tests/';  
 
   const [value, setValue] = useState("Type something!");
 
