@@ -1,58 +1,74 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+
+require('dotenv').config();
 
 function App() {
+  const url = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/tests/';
 
-  const url = `https://ag-react-backend.herokuapp.com/api/tests/`;
+  console.log(process.env.REACT_APP_API_URL);
   
+
   const [value, setValue] = useState("Type something!");
 
   const [message, setMessage] = useState("");
 
-  const changeValue = async (event) => {
+  const changeValue = async event => {
     if (event) {
       event.preventDefault();
     }
+
     const value = document.getElementById("input-value").value;
 
     if (!value) {
       setMessage("You must enter a value!");
       return;
     }
-    
-    let data = await fetch(url+value);
-    
-    let response = await data.json();
-    
-    setValue(response.data.message);
-    setMessage("");
-  }
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ value }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(error => setMessage(error.message))
+      .then(response => {
+        setValue(response.message);
+        setMessage("");
+      });
+  };
 
   return (
     <div className="main-container">
-      <form className="wrapper"
-            onSubmit={ (event) => changeValue(event) }>
-        <input  type="text"
-                name="input-value"
-                className="input-value"
-                id="input-value" />
+      <form className="wrapper" onSubmit={event => changeValue(event)}>
+        <input
+          type="text"
+          name="input-value"
+          className="input-value"
+          id="input-value"
+        />
 
-        <button type="button"
-                name="sendData"
-                className="btn btn-default"
-                onClick={ () => changeValue() }
-                >MAYUS
+        <button
+          type="button"
+          name="sendData"
+          className="btn btn-default"
+          onClick={() => changeValue()}
+        >
+          MAYUS
         </button>
 
-        <label  htmlFor="input-value"
-                className="label label-info"
-                >{ value }
+        <label htmlFor="input-value" className="label label-info">
+          {value}
         </label>
-        
-        {message && <label  htmlFor="message"
-                            className="label label-error"
-                            >{ message }</label>}
-        </form>
+
+        {message && (
+          <label htmlFor="message" className="label label-error">
+            {message}
+          </label>
+        )}
+      </form>
     </div>
   );
 }
