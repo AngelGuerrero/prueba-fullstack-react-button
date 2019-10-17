@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/system/bin/www.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelGuerrero/react-test-button.git"
+  },
+  "author": "Ángel Guerrero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngelGuerrero/react-test-button/issues"
+  },
+  "homepage": "https://github.com/AngelGuerrero/react-test-button",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "http-errors": "^1.7.0",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "eslint": "^6.5.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.7",
+    "morgan": "^1.9.0",
+    "read-yaml": "^1.1.0"
+  }
+}
