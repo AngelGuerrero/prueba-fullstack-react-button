@@ -39,6 +39,7 @@ function App() {
 
   return (
     <div className="main-container">
+      <h1 className="header-title">React test app</h1>
       <form className="wrapper" onSubmit={event => changeValue(event)}>
         <input
           type="text"
