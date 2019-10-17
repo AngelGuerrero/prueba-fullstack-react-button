@@ -1,13 +1,18 @@
-const express = require('express');
+const express = require("express");
 
 let router = express.Router();
 
-router.get('/:value', (req, res) => {
-  let value = req.params.value;
+router.post("/", (req, res) => {
+  let value = req.body.value;
+
+  if (!value)
+    return res.status(500).send({ message: "Error: No value was given" });
 
   let newValue = value.toUpperCase();
 
-  return res.status(200).json({ message: newValue });
+  console.log(`${value} => ${newValue}`);
+
+  return res.status(200).send({ message: newValue });
 });
 
 module.exports = router;
